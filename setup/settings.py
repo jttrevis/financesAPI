@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     "category",
 
     "rest_framework",
+    'django_filters',
 ]
 
 MIDDLEWARE = [
@@ -111,7 +112,7 @@ USE_I18N = True
 
 USE_TZ = True
 
-
+DATE_INPUT_FORMATS = ['%d-%m-%Y']
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
@@ -121,3 +122,7 @@ STATIC_URL = "static/"
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+REST_FRAMEWORK = {
+    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend']
+}

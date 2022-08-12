@@ -10,6 +10,7 @@ routers.register('income', IncomeViewSet)
 routers.register('expenses', ExpensesViewSet)
 routers.register('category', CategoryAPIViewSet)
 
+
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("", include(routers.urls)),
