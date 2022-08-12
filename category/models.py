@@ -4,11 +4,12 @@ from django.db import models
 class CategoryAPI(models.Model):
 
     CAT_OPT = [
-        ('F', 'Food'),
-        ('H', 'Health'),
-        ('E', 'Education'),
-        ('H', 'Home'),
-        ('O', 'Other'),
+        ('Food', 'Food'),
+        ('Health', 'Health'),
+        ('Travel', 'Travel'),
+        ('Education', 'Education'),
+        ('Home', 'Home'),
+        ('Other', 'Other'),
     ]
     category_type = models.CharField(
-        choices=CAT_OPT, max_length=1, null=False, default='O')
+        choices=CAT_OPT, max_length=10, null=False, default='Other')

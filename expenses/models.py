@@ -9,4 +9,4 @@ class Expenses(models.Model):
     description = models.CharField(max_length=255)
     amount = models.DecimalField(max_digits=10, decimal_places=2)
     category_opt = models.CharField(
-        choices=CATEGORY_ID, max_length=1, null=False, default='O', name='category')
+        choices=CATEGORY_ID, max_length=10, null=False, default='Other', name='category')
