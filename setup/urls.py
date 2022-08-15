@@ -1,12 +1,14 @@
 from django.contrib import admin
 from django.urls import path, include
-from rest_framework import routers
+from rest_framework import routers, permissions
+from drf_yasg.views import get_schema_view
+from drf_yasg import openapi
+
+
+from summary.views import SummaryViewSet
 from expenses.views import ExpensesViewSet, ExpensesList
 from income.views import IncomeViewSet, IncomeList
 from category.views import CategoryAPIViewSet
-from rest_framework import permissions
-from drf_yasg.views import get_schema_view
-from drf_yasg import openapi
 
 
 schema_view = get_schema_view(
@@ -30,6 +32,7 @@ routers.register('category', CategoryAPIViewSet, basename='Category')
 
 urlpatterns = [
     path('expenses/<int:year>/<int:month>/', ExpensesList.as_view()),
+    path('summary/<int:year>/<int:month>/', SummaryViewSet.as_view()),
     path('income/<int:year>/<int:month>/', IncomeList.as_view()),
     path("admin/", admin.site.urls),
     path("", include(routers.urls)),

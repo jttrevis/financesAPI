@@ -1,8 +1,8 @@
-from rest_framework import viewsets, filters
+from rest_framework import viewsets, filters, generics
+from django_filters.rest_framework import DjangoFilterBackend
+
 from .models import Expenses
 from .api.serializers import ExpensesSerializer
-from django_filters.rest_framework import DjangoFilterBackend
-from rest_framework import generics
 
 
 class ExpensesViewSet(viewsets.ModelViewSet):

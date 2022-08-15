@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     "income",
     "expenses",
     "category",
+    "summary",
 
     "rest_framework",
     'django_filters',
