@@ -13,4 +13,15 @@ class ExpensesViewSet(viewsets.ModelViewSet):
                        filters.SearchFilter, filters.OrderingFilter]
     search_fields = ['date', 'description']
     ordering_fields = ['date']
-    filterset_fields = ['description', 'date']
+    filterset_fields = ['description']
+
+
+class ExpensesList(generics.ListAPIView):
+
+    def get_queryset(self):
+
+        queryset = Expenses.objects.filter(
+            date__year=self.kwargs['year'], date__month=self.kwargs['month'])
+        return queryset
+
+    serializer_class = ExpensesSerializer

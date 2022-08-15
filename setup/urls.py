@@ -1,8 +1,8 @@
 from django.contrib import admin
 from django.urls import path, include
 from rest_framework import routers
-from expenses.views import ExpensesViewSet
-from income.views import IncomeViewSet
+from expenses.views import ExpensesViewSet, ExpensesList
+from income.views import IncomeViewSet, IncomeList
 from category.views import CategoryAPIViewSet
 from rest_framework import permissions
 from drf_yasg.views import get_schema_view
@@ -23,12 +23,14 @@ schema_view = get_schema_view(
 )
 
 routers = routers.SimpleRouter()
-routers.register('income', IncomeViewSet)
-routers.register('expenses', ExpensesViewSet)
-routers.register('category', CategoryAPIViewSet)
+routers.register('income', IncomeViewSet, basename='Income')
+routers.register('expenses', ExpensesViewSet, basename='Expenses')
+routers.register('category', CategoryAPIViewSet, basename='Category')
 
 
 urlpatterns = [
+    path('expenses/<int:year>/<int:month>/', ExpensesList.as_view()),
+    path('income/<int:year>/<int:month>/', IncomeList.as_view()),
     path("admin/", admin.site.urls),
     path("", include(routers.urls)),
     path('swagger/', schema_view.with_ui('swagger',

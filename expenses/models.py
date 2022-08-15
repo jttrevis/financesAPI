@@ -1,6 +1,7 @@
 
 from django.db import models
 from category.models import *
+from django_filters import rest_framework as filters
 
 
 class Expenses(models.Model):
