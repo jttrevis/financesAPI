@@ -24,13 +24,3 @@ class SummaryViewSet(APIView):
             'Total/Month': f'£{final_value}',
             'Total-By-Category': category_expenses
         })
-
-
-# class SummaryList(generics.ListAPIView):
-#     def get_queryset(self):
-
-#         queryset = Expenses.objects.filter(
-#             date__year=self.kwargs['year'], date__month=self.kwargs['month'])
-#         return queryset
-
-#     serializer_class = ExpensesSerializer

@@ -4,29 +4,42 @@ from django.urls import reverse
 from rest_framework import status
 
 
-class ExpensesTestCase(APITestCase):
+class ExpensesTests(APITestCase):
+    url = reverse('Expenses-list')
 
-    def setUp(self):
-        self.list_url = reverse('Expenses-list')
-        self.expenses_1 = Expenses.objects.create(
-            date='2022-12-12', description='Test Rent 1', amount=1000, category_opt='Food'
-        )
-        self.expenses_2 = Expenses.objects.create(
-            description='Test Car 2', amount=100
-        )
+    def test_create_expenses(self):
+        """Test POST  request - Expense"""
+        data = {
+            'description': 'Test01',
+            'date': '2022-01-01',
+            'amount': 1000,
+            'category_opt': 'Other',
+        }
+        response = self.client.post(self.url, data, format='json')
+        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
+        self.assertEqual(Expenses.objects.count(), 1)
+        self.assertEqual(Expenses.objects.get().description, 'Test01')
 
-        def test_get_expenses(self):
-            """Test GET request"""
-            response = self.client.get(self.list_url)
-            self.assertEquals(response.status_code, status.HTTP_200_OK)
+    def test_get_expenses(self):
+        """Test GET request - Expenses"""
+        url = reverse('Expenses-list')
+        response = self.client.get(url)
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
 
-        def test_post_expenses(self):
-            """Test POST request"""
-            data = {
+    def test_put_expenses(self):
+        """Test PUT request - Expense"""
+        data = {
+            'description': 'Test0attt',
+            'date': '2022-01-01',
+            'amount': 1000,
+            'category_opt': 'Other',
+        }
+        response = self.client.put(self.url + '1', data=data)
+        self.assertEqual(response.status_code,
+                         status.HTTP_301_MOVED_PERMANENTLY)
 
-                'description': 'Test Car 2',
-                'amount': 1000,
+    def test_delete_expenses(self):
+        """Test DELETE - Expense"""
 
-            }
-            response = self.client.post(self.list_url, data=data)
-            self.assertEquals(response.status_code, status.HTTP_201_CREATED)
+        response = self.client.delete('/expenses/1/')
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
