@@ -9,7 +9,7 @@ from summary.views import SummaryViewSet
 from expenses.views import ExpensesViewSet, ExpensesList
 from income.views import IncomeViewSet, IncomeList
 from category.views import CategoryAPIViewSet
-
+from user.views import UserViewSet
 
 schema_view = get_schema_view(
     openapi.Info(
@@ -28,6 +28,7 @@ routers = routers.SimpleRouter()
 routers.register('income', IncomeViewSet, basename='Income')
 routers.register('expenses', ExpensesViewSet, basename='Expenses')
 routers.register('category', CategoryAPIViewSet, basename='Category')
+routers.register('register', UserViewSet, basename='Register')
 
 
 urlpatterns = [

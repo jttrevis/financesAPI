@@ -1,9 +1,11 @@
 from .models import Income
 from .api.serializers import IncomeSerializer
 from rest_framework import viewsets, generics
+from rest_framework.permissions import IsAuthenticated
 
 
 class IncomeViewSet(viewsets.ModelViewSet):
+    permission_classes = [IsAuthenticated]
     queryset = Income.objects.all()
     serializer_class = IncomeSerializer
 

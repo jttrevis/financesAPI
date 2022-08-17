@@ -1,5 +1,6 @@
 from rest_framework import viewsets, filters, generics
 from django_filters.rest_framework import DjangoFilterBackend
+from rest_framework.permissions import IsAuthenticated
 
 from .models import Expenses
 from .api.serializers import ExpensesSerializer
@@ -8,7 +9,7 @@ from .api.serializers import ExpensesSerializer
 class ExpensesViewSet(viewsets.ModelViewSet):
     queryset = Expenses.objects.all()
     serializer_class = ExpensesSerializer
-
+    permission_classes = [IsAuthenticated]
     filter_backends = [DjangoFilterBackend,
                        filters.SearchFilter, filters.OrderingFilter]
     search_fields = ['date', 'description']
