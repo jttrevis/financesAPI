@@ -24,7 +24,7 @@ schema_view = get_schema_view(
     permission_classes=[permissions.AllowAny],
 )
 
-routers = routers.SimpleRouter()
+routers = routers.DefaultRouter()
 routers.register('income', IncomeViewSet, basename='Income')
 routers.register('expenses', ExpensesViewSet, basename='Expenses')
 routers.register('category', CategoryAPIViewSet, basename='Category')
