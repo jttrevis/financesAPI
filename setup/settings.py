@@ -138,4 +138,4 @@ REST_FRAMEWORK = {
     #     ]
 }
 
-# django_heroku.settings(locals())
+django_heroku.settings(locals())
