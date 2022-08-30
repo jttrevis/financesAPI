@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "django-insecure-t&vh88vxit(tg)p#vf=wf)$9c3g%2+ra79(r8boi*u&noxjni="
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['trevis-api-finances.herokuapp.com', '127.0.0.1', 'localhost']
 
