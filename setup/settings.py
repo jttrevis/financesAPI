@@ -26,7 +26,7 @@ SECRET_KEY = "django-insecure-t&vh88vxit(tg)p#vf=wf)$9c3g%2+ra79(r8boi*u&noxjni=
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['trevis-api-finances.herokuapp.com', 'localhost']
 
 
 # Application definition
