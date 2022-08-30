@@ -32,11 +32,12 @@ routers.register('register', UserViewSet, basename='Register')
 
 
 urlpatterns = [
+    path("", include(routers.urls)),
+    path("admin/", admin.site.urls),
+    path("api-auth/", include('rest_framework.urls')),
     path('expenses/<int:year>/<int:month>/', ExpensesList.as_view()),
     path('summary/<int:year>/<int:month>/', SummaryViewSet.as_view()),
     path('income/<int:year>/<int:month>/', IncomeList.as_view()),
-    path("admin/", admin.site.urls),
-    path("", include(routers.urls)),
     path('swagger/', schema_view.with_ui('swagger',
          cache_timeout=0), name='schema-swagger-ui'),
     path('redoc/', schema_view.with_ui('redoc',
