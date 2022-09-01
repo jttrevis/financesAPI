@@ -27,4 +27,4 @@ All endpoits and info [Swagger](https://trevis-api-finances.herokuapp.com/swagge
 
 ## License
 
-[License MIT](https://github.com/jttrevis/financesAPI/blob/add-license-1/LICENSE)
+[License MIT](https://github.com/jttrevis/financesAPI/blob/main/LICENSE)
